@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:34:56 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 12:24:55 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/09 19:19:08 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
+int			ft_strcmp(const char *s1, const char *s2);
 void		*ft_memset(void *b, int c, size_t len);
 void		ft_bzero(void *s, size_t n);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_strnstr(const char *s, const char *need, size_t len);
+char		*ft_strstr(const char *haystack, const char *needle);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 void		*ft_memmove(void *dst, const void *src, size_t len);

@@ -1,47 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 11:26:59 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 22:13:59 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/09 15:11:52 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/09 15:12:00 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int	ft_check(char *s)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
+	while ((s1[i] || s2[i]))
 	{
-		if (s[i] == '\n')
-			return (1);
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
 	return (0);
-}
-
-int	ft_free_return(char *trash)
-{
-	free (trash);
-	return (0);
-}
-
-int     ft_strlen2(char *s)
-{
-        int     i;
-
-        if (!s)
-                return (0);
-        i = 0;
-        while (s[i])
-                i++;
-        return (i);
 }

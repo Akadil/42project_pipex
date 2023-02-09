@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akalimol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 15:45:20 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 12:23:24 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/09 22:15:08 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_clean_up(char **_buffer, int len)
 	char	*rest;
 	int		i;
 
-	rest = (char *)malloc(ft_strlen(*_buffer) - len + 1);
+	rest = (char *)malloc(ft_strlen2(*_buffer) - len + 1);
 	if (!rest)
 		return (0);
 	i = len;
@@ -100,7 +100,7 @@ static int	ft_read_line(char **con, int fd)
 	actual_size = BUFFER_SIZE;
 	buffer = *con;
 	bytes = 0;
-	ind = ft_strlen(buffer);
+	ind = ft_strlen2(buffer);
 	while (ft_check(buffer + ind) == 0)
 	{
 		ind = ind + bytes;
