@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_data.h                                          :+:      :+:    :+:   */
+/*   ft_clean.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 12:38:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 21:33:35 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/11 20:39:47 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/11 21:34:37 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DATA_H
-# define FT_DATA_H
+#ifndef FT_CLEAN_H
+# define FT_CLEAN_H
 
-typedef struct s_data
-{
-	char	*infile;
-	char	*outfile;
-	char	**paths;
-	int		prev_fd;
-	int		pipe_fd[2];
-	int		num_commands;
-	char	**commands;
-	int		heredoc_fd;
-}			t_data;
+# include "ft_data.h"
+
+void	ft_clean_fds(t_data *my_data);
+void	ft_clean_data(t_data *my_data);
+void	ft_clean_full(t_data *my_data);
 
 #endif

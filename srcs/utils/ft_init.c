@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 13:15:10 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 19:36:08 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/10 18:55:32 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/11 15:49:20 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_data.h"
-#include "libft.h"
-#include <sys/wait.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <errno.h>
-
-void    ft_clean(t_data *my_data)
-{
-    free(my_data);
-    //printf("Do me, please!!!\n");
-}
+#include "ft_error.h"
 
 void    ft_init_my_data(t_data **my_data)
 {
@@ -30,21 +19,15 @@ void    ft_init_my_data(t_data **my_data)
 
     _my_data = (t_data *)malloc(sizeof(t_data));
     if (!_my_data)
-    {
-        ft_printf("%s", strerror(errno));
-        exit(-1);
-    }
+        ft_error_exit();
+    _my_data->infile = NULL;
+    _my_data->outfile = NULL;
+    _my_data->env = NULL;
+    _my_data->pipe_fd[0] = -1;
+    _my_data->pipe_fd[1] = -1;
+    _my_data->prev_fd = -1;
+    _my_data->num_commands = -1;
+    _my_data->commands = NULL;
+    _my_data->heredoc_fd = -1;
     *my_data = _my_data;
-}
-
-void    ft_wait_children(t_data *my_data)
-{
-    int i;
-
-    i = 0;
-    while (i < my_data->num_commands)
-    {
-        wait(NULL);
-        i++;
-    }
 }

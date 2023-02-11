@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:15:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 21:20:00 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:56:10 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int	main(int argc, char **argv, char **env)
 
 	my_data = NULL;
 	ft_init_my_data(&my_data);
-	ft_preprocessing(argc, argv, env, my_data);
+	ft_preprocess(argc, argv, env, my_data);
 	i = 0;
 	while (i < my_data->num_commands)
 	{
-		ft_prepare_fds(argc, argv, my_data, i);
+		ft_prepare_fd(argc, argv, my_data, i);
 		if (my_data->prev_fd != -1)
 			ft_exec_command(my_data, i);
 		i++;
 	}
 	ft_wait_children(my_data);
-	ft_clean(my_data);
+	ft_clean_full(my_data); // I also have to delete the tmp.txt
 	return (0);
 }

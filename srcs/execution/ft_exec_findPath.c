@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_data.h                                          :+:      :+:    :+:   */
+/*   ft_exec_findPath.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 12:38:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 21:33:35 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/07 17:17:02 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/11 21:37:16 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DATA_H
-# define FT_DATA_H
+#include "ft_execution_find_path.h"
 
-typedef struct s_data
+char    *ft_find_path(char *str, char **all_paths)
 {
-	char	*infile;
-	char	*outfile;
-	char	**paths;
-	int		prev_fd;
-	int		pipe_fd[2];
-	int		num_commands;
-	char	**commands;
-	int		heredoc_fd;
-}			t_data;
+    char    *path;
 
-#endif
+    path = ft_construct_command(str, all_paths);
+	return (path); // This one too! Also I have to free the all_potential paths!
+}

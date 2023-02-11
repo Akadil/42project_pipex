@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_data.h                                          :+:      :+:    :+:   */
+/*   ft_bonus_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 12:38:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 21:33:35 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/07 13:15:10 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/11 15:50:47 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DATA_H
-# define FT_DATA_H
+#include "ft_data.h"
+#include <sys/wait.h>
+#include <stdio.h>
 
-typedef struct s_data
+void    ft_wait_children(t_data *my_data)
 {
-	char	*infile;
-	char	*outfile;
-	char	**paths;
-	int		prev_fd;
-	int		pipe_fd[2];
-	int		num_commands;
-	char	**commands;
-	int		heredoc_fd;
-}			t_data;
+    int i;
 
-#endif
+    i = 0;
+    while (i < my_data->num_commands)
+    {
+        wait(NULL);
+        i++;
+    }
+}

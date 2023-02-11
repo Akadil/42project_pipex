@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bonus.h                                         :+:      :+:    :+:   */
+/*   ft_clean.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 12:54:07 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 15:56:06 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/10 18:28:38 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/11 21:27:26 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BONUS_H
-# define FT_BONUS_H
-
 #include "ft_data.h"
-#include <stdio.h>
+#include "ft_error.h"
 
-void    ft_preprocess(int argc, char **argv, char **env, t_data *my_data);
-void    ft_prepare_fd(int argc, char **argv, t_data *my_data, int index);
-void    ft_exec_command(t_data *my_data, int index);
-void    ft_init_my_data(t_data **my_data);
-void    ft_wait_children(t_data *my_data);
-void    ft_clean(t_data *my_data);
+void    ft_clean_fds(t_data *my_data)
+{
+    close(my_data->prev_fd);
+    close(my_data->pipe_fd[0]);
+    close(my_data->pipe_fd[1]);
+}
 
-#endif
+void    ft_clean_data(t_data *my_data)
+{
+    if (my_data)
+    {
+        if (my_data->commands)
+            free(my_data->commands);
+        free(my_data);
+    }
+}
+
+void    ft_clean_full(t_data *my_data)
+{
+	ft_clean_data(my_data);
+	ft_clean_fds(my_data);
+}

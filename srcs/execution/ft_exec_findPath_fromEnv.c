@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_potential_paths_from_env.c                  :+:      :+:    :+:   */
+/*   ft_exec_findPath_fromEnv.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 20:17:34 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 19:09:10 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/11 21:11:54 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ char	**ft_get_potential_paths(char **_env)
 
 	str = ft_find_path_line(_env);
 	if (str == NULL)
-		return (NULL);
+		return (NULL); // This null mean that ev doesn't contain any "PATH:"
 	all_paths = ft_split(ft_strstr(str, "/"), ':');
 	if (!all_paths)
-		return (NULL);
-	if (ft_add_slashes(all_paths) == -1)
+		return (NULL); // This one means that there was malloc problem
+	if (ft_add_slashes(all_paths) == -1) // This one malloc problems
 	{
 		ft_free_2array(all_paths);
 		return (NULL);

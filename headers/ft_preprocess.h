@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_data.h                                          :+:      :+:    :+:   */
+/*   ft_preprocess.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 12:38:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 21:33:35 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/10 15:57:58 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/11 15:52:26 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DATA_H
-# define FT_DATA_H
+#ifndef FT_PREPROCESS_H
+# define FT_PREPROCESS_H
 
-typedef struct s_data
-{
-	char	*infile;
-	char	*outfile;
-	char	**paths;
-	int		prev_fd;
-	int		pipe_fd[2];
-	int		num_commands;
-	char	**commands;
-	int		heredoc_fd;
-}			t_data;
+# include "ft_data.h"
+# include "ft_error.h"
+# include "libft.h"
+
+void    ft_preprocess_cmd_heredoc(int argc, char **argv, t_data *my_data);
+void    ft_preprocess_cmd_normal(int argc, char **argv, t_data *my_data);
 
 #endif

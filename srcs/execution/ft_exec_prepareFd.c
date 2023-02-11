@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:02 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 19:21:08 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:07:56 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void    ft_prepare_beg(t_data *my_data);
 static void    ft_prepare_mid(t_data *my_data);
 static void    ft_prepare_end(int argc, char **argv, t_data *my_data);
 
-void    ft_prepare_fds(int argc, char **argv, t_data *my_data, int index)
+void    ft_prepare_fd(int argc, char **argv, t_data *my_data, int index)
 {
 	int	last_ind;
 
@@ -41,12 +41,12 @@ void    ft_prepare_beg(t_data *my_data)
     fd[0] = -1;
     fd[1] = -1;
     if (pipe(fd) == -1)
-        ft_printf("%s\n", strerror(errno));
+        ft_perror_clean_full_exit("Pipe failed");
     my_data->pipe_fd[0] = fd[0];
     my_data->pipe_fd[1] = fd[1];
     my_data->prev_fd = open(my_data->infile, O_RDONLY);
     if (my_data->prev_fd == -1)
-        ft_printf("%s\n", strerror(errno));
+        ft_error();
 }
 
 void    ft_prepare_mid(t_data *my_data)
@@ -58,7 +58,7 @@ void    ft_prepare_mid(t_data *my_data)
     my_data->prev_fd = my_data->pipe_fd[0];
     close(my_data->pipe_fd[1]);
 	if (pipe(fd) == -1)
-        ft_printf("%s\n", strerror(errno));
+        ft_perror_clean_full_exit("Pipe failed");
 	my_data->pipe_fd[1] = fd[1];
 	my_data->pipe_fd[0] = fd[0];
 }
@@ -72,8 +72,11 @@ void    ft_prepare_end(int argc, char **argv, t_data *my_data)
 	close(my_data->pipe_fd[1]);
 	my_data->prev_fd = my_data->pipe_fd[0];
     my_data->pipe_fd[0] = -1;
-	fd_out = open(argv[last_ind], O_WRONLY | O_CREAT | O_TRUNC, 0666);
+    if (my_data->heredoc_fd == -1)
+	    fd_out = open(argv[last_ind], O_WRONLY | O_CREAT | O_TRUNC, 0666);
+    else
+        fd_out = open(argv[last_ind], O_WRONLY | O_CREAT | O_APPEND, 0666);
     if (fd_out == -1)
-        ft_printf("%s\n", strerror(errno));
-    my_data->pipe_fd[1] = fd_out;		
+        ft_perror_clean_full_exit("Out file creation failed");
+    my_data->pipe_fd[1] = fd_out;
 }

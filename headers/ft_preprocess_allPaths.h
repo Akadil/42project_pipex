@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_data.h                                          :+:      :+:    :+:   */
+/*   ft_preprocess_allPaths.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 12:38:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 21:33:35 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/11 21:31:31 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/11 21:31:34 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DATA_H
-# define FT_DATA_H
+#ifndef FT_PREPROCESS_ALLPATHS_H
+# define FT_PREPROCESS_ALLPATHS_H
 
-typedef struct s_data
-{
-	char	*infile;
-	char	*outfile;
-	char	**paths;
-	int		prev_fd;
-	int		pipe_fd[2];
-	int		num_commands;
-	char	**commands;
-	int		heredoc_fd;
-}			t_data;
+# include "ft_data.h"
+# include "libft.h"
+# include <stdlib.h>
+# include <stdio.h>
+
+static char	*ft_find_path_line(char **_env);
+static int		ft_add_slashes(char **_all_paths);
+static void	ft_free_2array(char **trash);
 
 #endif
