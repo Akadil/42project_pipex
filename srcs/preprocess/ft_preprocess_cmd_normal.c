@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:41:00 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 15:43:19 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:05:25 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_error.h"
 #include <stdlib.h>
 
-static void    ft_preprocess_normal(int argc, char **argv, t_data *my_data)
+void    ft_preprocess_cmd_normal(int argc, char **argv, t_data *my_data)
 {
     char    **commands;
     int i;

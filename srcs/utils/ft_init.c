@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:55:32 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 15:49:20 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:52:34 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    ft_init_my_data(t_data **my_data)
         ft_error_exit();
     _my_data->infile = NULL;
     _my_data->outfile = NULL;
-    _my_data->env = NULL;
+    _my_data->paths = NULL;
     _my_data->pipe_fd[0] = -1;
     _my_data->pipe_fd[1] = -1;
     _my_data->prev_fd = -1;

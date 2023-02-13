@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:31:31 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 21:31:34 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:22:08 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PREPROCESS_ALLPATHS_H
 
 # include "ft_data.h"
+# include "ft_error.h"
 # include "libft.h"
 # include <stdlib.h>
 # include <stdio.h>

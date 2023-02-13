@@ -5,17 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 17:17:02 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 21:37:16 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/11 20:52:13 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/13 17:12:24 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_execution_find_path.h"
+#include "ft_execution_findPath.h"
 
-char    *ft_find_path(char *str, char **all_paths)
+char	*ft_find_path_exit(t_data *my_data, char *full_command)
 {
-    char    *path;
+	char	*temp_command;
+	char	*command;
+	int		i;
 
-    path = ft_construct_command(str, all_paths);
-	return (path); // This one too! Also I have to free the all_potential paths!
+	command = ft_extract_command_exit(my_data, full_command);
+	i = 0;
+	while (my_data->paths[i])
+	{
+		temp_command = ft_strjoin(my_data->paths[i++], command);
+		if (!temp_command)
+			ft_free_perror_exit(my_data, command);
+		if (access(temp_command, X_OK) == 0)
+			return(temp_command);
+		free(temp_command);
+		if (errno != 2)
+			ft_free_perror2_exit(my_data, command);
+	}
+	if (full_command[0] == '\\')
+		ft_merror("bash: %s: No such file or directory\n", command);
+	else
+		ft_merror("%s: command not found\n", command);
+	return (free(command), ft_clean_exit(my_data), NULL);
+}
+
+static char	*ft_extract_command_exit(t_data *my_data, char *_arg)
+{
+	char	*command;
+	int		size;
+	int		i;
+
+	size = 0;
+	while (_arg && _arg[size] != ' ')
+		size++;
+	command = (char *)malloc(sizeof(char) * (size + 1));
+	if (!command)
+		ft_perror_clean_exit(my_data, "Malloc failed in child process");
+	i = 0;
+	while (i < size)
+	{
+		command[i] = _arg[i];
+		i++;
+	}
+	command[i] = '\0';
+	return (command);
+}
+
+static void	ft_free_perror_exit(t_data *my_data, char *_command)
+{
+	free (_command);
+	ft_perror_clean_exit(my_data, "Malloc failed in child process");
+}
+
+static void	ft_free_perror2_exit(t_data *my_data, char *command)
+{
+	ft_perror(command);
+	free(command);
+	ft_clean_exit(my_data);
 }

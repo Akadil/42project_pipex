@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:15:14 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 15:56:10 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:34:20 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv, char **env)
 		i++;
 	}
 	ft_wait_children(my_data);
-	ft_clean_full(my_data); // I also have to delete the tmp.txt
+	ft_close_heredoc(my_data);
+	ft_clean_full(my_data);
 	return (0);
 }

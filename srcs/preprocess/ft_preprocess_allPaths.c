@@ -6,20 +6,20 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:20:21 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/11 21:33:30 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:10:16 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_preprocess_allPaths.h"
 
-void    ft_preprocess_get_all_paths(t_data *my_data, char **_env)
+void    ft_preprocess_get_allPaths(t_data *my_data, char **_env)
 {
 	char	**all_paths;
 	char	*str;
 
 	str = ft_find_path_line(_env);
 	if (str == NULL)
-        ft_merror_clean_exit(my_data, "No \"PATH=\" in environment variables");
+        ft_merror_clean_exit(my_data, "%s\n", "No \"PATH=\" in environment variables");
 	all_paths = ft_split(ft_strstr(str, "/"), ':');
 	if (!all_paths)
 		ft_perror_clean_exit(my_data, "Malloc failed");
