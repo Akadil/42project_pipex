@@ -4,7 +4,7 @@
 The purpose of this project is the discovery in detail UNIX mechanism - `pipe`.
 
 ## Implementation
-Run the makefile with command
+Clone repository and type
 ```bash
 $> make
 ```
