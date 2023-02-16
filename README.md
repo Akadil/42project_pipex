@@ -3,6 +3,12 @@
 
 The purpose of this project is the discovery in detail UNIX mechanism - `pipe`.
 
+## Implementation
+Run the makefile with command
+```bash
+$> make
+```
+
 ## Description
 Program needs to handle multiple pipes
 ```bash
@@ -17,8 +23,4 @@ $> cmd1 << LIMITER | cmd2 >> file2
 $> ./pipex here_doc LIMITER cmd1 cmd2 file2
 ```
 
-## Implementation
 
-'''Bash
-$> make
-'''
