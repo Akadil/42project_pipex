@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:10:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 21:10:14 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:48:05 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*ft_find_path_exit(t_data *my_data, char *full_command);
+char	*ft_find_path_exit(t_data *my_data, char *full_cmd);
 
 #endif

@@ -6,12 +6,15 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:15:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 21:05:44 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:04:35 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_preprocess_heredoc.h"
 
+/*
+		Put commands from input inside my_data. Also handle here_doc
+*/
 void	ft_preprocess_cmd_heredoc(int argc, char **argv, t_data *my_data)
 {
 	char	**commands;
@@ -33,28 +36,32 @@ void	ft_preprocess_cmd_heredoc(int argc, char **argv, t_data *my_data)
 	my_data->num_commands = i;
 }
 
+/*
+		Save the data from here_doc inside temporary created file
+	
+	input:
+		my_data - is my data
+		delimiter - is delimiter for here_doc
+*/
 static void	ft_get_here_doc(t_data *my_data, char *delimiter)
 {
-	char	*s;
+	char	*line;
 
-	s = NULL;
 	delimiter = ft_strjoin(delimiter, "\n");
 	if (!delimiter)
 		ft_error_clean_exit(my_data);
-	my_data->heredoc_fd = open("srcs/tmp/tmp.txt", O_RDWR | O_CREAT | O_TRUNC,
-			0644);
+	my_data->heredoc_fd = open("srcs/tmp/tmp.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (my_data->heredoc_fd == -1)
-		ft_perror_clean_exit(my_data, "Temporary file for here_doc");
-	while (1)
+		ft_perror_clean_exit(my_data, "Temporary file for here_doc failed");
+	line = get_next_line(0, 0);
+	while (line && ft_strcmp(line, delimiter) != 0)
 	{
-		s = get_next_line(0, 0);
-		if (!s || !ft_strcmp(s, delimiter))
-			break ;
-		ft_putstr_fd(s, my_data->heredoc_fd);
-		free(s);
+		ft_putstr_fd(line, my_data->heredoc_fd);
+		free(line);
+		line = get_next_line(0, 0);
 	}
 	free(delimiter);
-	free(s);
+	free(line);
 	get_next_line(0, 1);
 	close(my_data->heredoc_fd);
 }

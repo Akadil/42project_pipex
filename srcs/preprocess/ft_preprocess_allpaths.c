@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_preprocess_allPaths.c                           :+:      :+:    :+:   */
+/*   ft_preprocess_allpaths.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:20:21 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 21:14:06 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:53:00 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_preprocess_allPaths.h"
 
+/*
+		Save all possible paths of commands from environment variables
+*/
 void	ft_preprocess_get_allpaths(t_data *my_data, char **_env)
 {
 	char	**all_paths;
-	char	*str;
+	char	*path_variable;
 
-	str = ft_find_path_line(_env);
-	if (str == NULL)
-		ft_merror_clean_exit(my_data, "%s\n", \
-								"No \"PATH=\" in environment variables");
-	all_paths = ft_split(ft_strstr(str, "/"), ':');
+	path_variable = ft_find_path_variable(_env);
+	if (path_variable == NULL)
+		ft_merror_clean_exit(my_data, "%s\n", "No \"PATH=\" in environment variables");
+	all_paths = ft_split(ft_strstr(path_variable, "/"), ':'); // ft_strstr() removes "PATH=/"
 	if (!all_paths)
 		ft_perror_clean_exit(my_data, "Malloc failed");
-	if (ft_add_slashes(all_paths) == -1)
+	if (ft_add_slashes(all_paths) == -1) // Refactoring paths
 	{
-		ft_free_2array(all_paths);
+		ft_free_double_array(all_paths);
 		ft_perror_clean_exit(my_data, "Malloc failed");
 	}
 	my_data->paths = all_paths;
 }
 
-static char	*ft_find_path_line(char **_env)
+static char	*ft_find_path_variable(char **_env)
 {
 	int	i;
 
@@ -64,7 +66,7 @@ static int	ft_add_slashes(char **_all_paths)
 	return (0);
 }
 
-static void	ft_free_2array(char **trash)
+static void	ft_free_double_array(char **trash)
 {
 	int	i;
 

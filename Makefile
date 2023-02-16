@@ -13,7 +13,7 @@ SRCS            =       ft_main.c \
 						preprocess/ft_preprocess_cmd_normal.c \
 						preprocess/ft_preprocess_cmd_heredoc.c \
 						execution/ft_exec_findpath.c \
-						execution/ft_exec_preparefd.c 
+						execution/ft_exec_prepare_pipes.c 
 
 SRCS_DIR		= ./srcs
 BUILD_DIR       = ./.build

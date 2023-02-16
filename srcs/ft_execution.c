@@ -6,15 +6,19 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:03:35 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/14 15:52:16 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:42:16 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_execution.h"
 
-void	ft_exec_command(t_data *my_data, int index)
+/*
+		Execute the command
+*/
+void	ft_exec_command(t_data *my_data, char *command)
 {
-	char	*path;
+	char	*command_path;
+	char	**splitted_command;
 	int		pid;
 
 	pid = fork();
@@ -27,10 +31,13 @@ void	ft_exec_command(t_data *my_data, int index)
 		if (dup2(my_data->pipe_fd[1], STDOUT_FILENO) == -1)
 			ft_perror_clean_exit(my_data, "Dup2 failed for child process");
 		ft_clean_fds(my_data);
-		path = ft_find_path_exit(my_data, my_data->commands[index]);
-		if (execve(path, ft_split(my_data->commands[index], ' '), NULL) == -1)
+		command_path = ft_find_path_exit(my_data, command);
+		splitted_command = ft_split(command, ' ');
+		if (!splitted_command)
+			ft_perror_clean_exit(my_data, "Malloc failed");
+		if (execve(command_path, splitted_command, NULL) == -1)
 			ft_perror_clean_exit(my_data, "Execve failed");
 	}
 	else
-		close(my_data->prev_fd);
+		close(my_data->prev_fd); // this fd is input pipe for above exec command 
 }

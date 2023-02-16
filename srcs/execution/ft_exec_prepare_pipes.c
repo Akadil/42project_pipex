@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec_prepareFd.c                                :+:      :+:    :+:   */
+/*   ft_exec_prepare_pipes.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:02 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 21:05:32 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:01:15 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ static void	ft_prepare_beg(t_data *my_data);
 static void	ft_prepare_mid(t_data *my_data);
 static void	ft_prepare_end(int argc, char **argv, t_data *my_data);
 
-void	ft_prepare_fd(int argc, char **argv, t_data *my_data, int index)
+/*
+		Prepare pipes(in, out) for executing the command.
+*/
+void	ft_prepare_pipes(int argc, char **argv, t_data *my_data, int index)
 {
 	int	last_ind;
 
@@ -35,6 +38,9 @@ void	ft_prepare_fd(int argc, char **argv, t_data *my_data, int index)
 		ft_prepare_end(argc, argv, my_data);
 }
 
+/*
+	Prepare a pipe for first command
+*/
 void	ft_prepare_beg(t_data *my_data)
 {
 	int	fd[2];
@@ -50,6 +56,9 @@ void	ft_prepare_beg(t_data *my_data)
 		ft_perror(my_data->infile);
 }
 
+/*
+	Prepare a pipe for middle commands
+*/
 void	ft_prepare_mid(t_data *my_data)
 {
 	int	fd[2];
@@ -64,6 +73,9 @@ void	ft_prepare_mid(t_data *my_data)
 	my_data->pipe_fd[0] = fd[0];
 }
 
+/*
+	Prepare a pipe for last command
+*/
 void	ft_prepare_end(int argc, char **argv, t_data *my_data)
 {
 	int	fd_out;
