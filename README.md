@@ -19,6 +19,6 @@ $> ./pipex here_doc LIMITER cmd1 cmd2 file2
 
 ## Implementation
 
-'''bash
+'''Bash
 $> make
 '''
