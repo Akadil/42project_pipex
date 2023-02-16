@@ -3,7 +3,7 @@
 
 The purpose of this project is the discovery in detail UNIX mechanism - `pipe`.
 
-### Description
+## Description
 Program needs to handle multiple pipes
 ```bash
 $> < file1 cmd1 | cmd2 | cmd3 | ... | cmdn > file2
@@ -17,3 +17,8 @@ $> cmd1 << LIMITER | cmd2 >> file2
 $> ./pipex here_doc LIMITER cmd1 cmd2 file2
 ```
 
+## Implementation
+
+'''bash
+$> make
+'''
