@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:34:56 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 19:19:08 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:11:11 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,13 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int			ft_printf(const char *s, ...);
-int			ft_putchar_fd_upd(char c);
-int			ft_putstr_fd_upd(char *s);
-int			ft_putnbr_fd_upd(int n);
-int			ft_putunbr(unsigned int nbr);
-int			ft_putptr(long unsigned int nbr);
-int			ft_puthex(unsigned int nbr, char c);
+int			ft_printf_stderr(const char *s, ...);
+int			ft_putchar_fd_upd(char c, int std);
+int			ft_putstr_fd_upd(char *s, int std);
+int			ft_putnbr_fd_upd(int n, int std);
+int			ft_putunbr(unsigned int nbr, int std);
+int			ft_putptr(long unsigned int nbr, int std);
+int			ft_puthex(unsigned int nbr, char c, int std);
 char		*get_next_line(int fd, int to_free);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/03 12:54:42 by akalimol          #+#    #+#              #
-#    Updated: 2023/02/09 19:19:23 by akalimol         ###   ########.fr        #
+#    Updated: 2023/02/13 19:22:26 by akalimol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ SRCS		= ft_atoi.c ft_isascii.c ft_memmove.c ft_striteri.c ft_strmapi.c \
 		  ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 		  ft_lstiter.c ft_lstlast.c ft_lstnew.c ft_lstsize.c ft_lstmap.c \
 		  ft_putchar_fd_upd.c ft_puthex.c ft_putnbr_fd_upd.c ft_putptr.c \
-		  ft_putstr_fd_upd.c ft_putunbr.c ft_printf.c get_next_line.c \
-		  get_next_line_utils.c ft_strstr.c
+		  ft_putstr_fd_upd.c ft_putunbr.c ft_printf.c ft_printf_stderror.c \
+		  get_next_line.c get_next_line_utils.c ft_strstr.c
 
 SRCS_DIR	= ./srcs
 BUILD_DIR	= ./.build

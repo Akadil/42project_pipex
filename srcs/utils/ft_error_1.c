@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bonus_utils.c                                   :+:      :+:    :+:   */
+/*   ft_error_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 13:15:10 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 18:50:33 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/10 16:01:36 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/14 19:01:24 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_data.h"
-#include <sys/wait.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "ft_error.h"
 
-void    ft_wait_children(t_data *my_data)
+void	ft_error(void)
 {
-    int i;
-
-    i = 0;
-    while (i < my_data->num_commands)
-    {
-        wait(NULL);
-        i++;
-    }
+	ft_printf_stderr("%s\n", strerror(errno));
 }
 
-void    ft_close_heredoc(t_data *my_data)
+void	ft_perror(char *str)
 {
-    if (my_data->heredoc_fd != -1)
-        unlink("srcs/tmp/tmp.txt");
+	perror(str);
+}
+
+void	ft_merror(char *str, char *param)
+{
+	ft_printf_stderr(str, param);
 }

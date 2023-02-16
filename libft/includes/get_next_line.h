@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:26:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 22:14:37 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:10:49 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@
 # include <unistd.h>
 # include "libft.h"
 
-int		ft_check(char *s);
-int		ft_free_return(char *trash);
-int     ft_strlen2(char *s);
-
+int	ft_check(char *s);
+int	ft_free_return(char *trash);
+int	ft_strlen2(char *s);
 
 #endif

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execution_findPath.h                            :+:      :+:    :+:   */
+/*   ft_bonus.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 15:41:17 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 21:06:52 by akalimol         ###   ########.fr       */
+/*   Created: 2023/02/08 12:54:07 by akalimol          #+#    #+#             */
+/*   Updated: 2023/02/14 14:47:20 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_EXECUTION_FINDPATH_H
-# define FT_EXECUTION_FINDPATH_H
+#ifndef FT_MAIN_H
+# define FT_MAIN_H
 
+# include "ft_clean.h"
 # include "ft_data.h"
-# include "ft_error.h"
-# include "libft.h"
-# include <errno.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include <stdio.h>
 
-static char	*ft_extract_command_exit(t_data *my_data, char *_arg);
-static void	ft_free_perror_exit(t_data *my_data, char *_command);
-static void	ft_free_perror2_exit(t_data *my_data, char *_command,
-				char *full_command);
+void	ft_init_my_data(t_data **my_data);
+void	ft_preprocess(int argc, char **argv, char **env, t_data *my_data);
+void	ft_prepare_fd(int argc, char **argv, t_data *my_data, int index);
+void	ft_exec_command(t_data *my_data, int index);
+void	ft_close_heredoc(t_data *my_data);
+void	ft_wait_children(t_data *my_data);
 
 #endif

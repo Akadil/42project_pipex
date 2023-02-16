@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:15:13 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 18:43:29 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:05:44 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static void	ft_get_here_doc(t_data *my_data, char *delimiter)
 	delimiter = ft_strjoin(delimiter, "\n");
 	if (!delimiter)
 		ft_error_clean_exit(my_data);
-	my_data->heredoc_fd = open("srcs/tmp/tmp.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	my_data->heredoc_fd = open("srcs/tmp/tmp.txt", O_RDWR | O_CREAT | O_TRUNC,
+			0644);
 	if (my_data->heredoc_fd == -1)
 		ft_perror_clean_exit(my_data, "Temporary file for here_doc");
 	while (1)

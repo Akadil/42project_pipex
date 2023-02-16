@@ -6,14 +6,14 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:14:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 11:49:36 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:12:28 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putchar_fd_upd(char c)
+int	ft_putchar_fd_upd(char c, int std)
 {
-	ft_putchar_fd(c, 1);
+	ft_putchar_fd(c, std);
 	return (1);
 }

@@ -16,7 +16,7 @@
                 "${workspaceFolder}/srcs/execution/*.c",
                 "${workspaceFolder}/srcs/utils/*.c",
                 "-o",
-                "${workspaceFolder}/a.out",
+                "${workspaceFolder}/a.out2",
                 "-L./libft/",
                 "-lft"
             ],

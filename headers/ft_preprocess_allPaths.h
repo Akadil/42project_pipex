@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:31:31 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 16:22:08 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:07:43 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdio.h>
 
 static char	*ft_find_path_line(char **_env);
-static int		ft_add_slashes(char **_all_paths);
+static int	ft_add_slashes(char **_all_paths);
 static void	ft_free_2array(char **trash);
 
 #endif

@@ -6,20 +6,21 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:20:21 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/13 16:10:16 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:14:06 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_preprocess_allPaths.h"
 
-void    ft_preprocess_get_allPaths(t_data *my_data, char **_env)
+void	ft_preprocess_get_allpaths(t_data *my_data, char **_env)
 {
 	char	**all_paths;
 	char	*str;
 
 	str = ft_find_path_line(_env);
 	if (str == NULL)
-        ft_merror_clean_exit(my_data, "%s\n", "No \"PATH=\" in environment variables");
+		ft_merror_clean_exit(my_data, "%s\n", \
+								"No \"PATH=\" in environment variables");
 	all_paths = ft_split(ft_strstr(str, "/"), ':');
 	if (!all_paths)
 		ft_perror_clean_exit(my_data, "Malloc failed");
@@ -33,13 +34,13 @@ void    ft_preprocess_get_allPaths(t_data *my_data, char **_env)
 
 static char	*ft_find_path_line(char **_env)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (_env[i])
 	{
 		if (ft_strncmp("PATH=", _env[i], 5) == 0)
-			return(_env[i]);
+			return (_env[i]);
 		i++;
 	}
 	return (NULL);
@@ -70,8 +71,8 @@ static void	ft_free_2array(char **trash)
 	i = 0;
 	while (trash[i])
 	{
-		free (trash[i]);
+		free(trash[i]);
 		i++;
 	}
-	free (trash);
+	free(trash);
 }

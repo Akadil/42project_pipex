@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 11:05:03 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 11:49:39 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:13:25 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static int	ft_get_size(int n)
 	return (len);
 }
 
-int	ft_putnbr_fd_upd(int n)
+int	ft_putnbr_fd_upd(int n, int std)
 {
 	int	len;
 
-	ft_putnbr_fd(n, 1);
+	ft_putnbr_fd(n, std);
 	len = ft_get_size(n);
 	if (n < 0)
 		len++;

@@ -6,24 +6,24 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:14:48 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/09 11:49:52 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:13:03 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putstr_fd_upd(char *s)
+int	ft_putstr_fd_upd(char *s, int std)
 {
 	int	len;
 
 	len = 0;
 	if (!s)
-		len += ft_putstr_fd_upd("(null)");
+		len += ft_putstr_fd_upd("(null)", std);
 	else
 	{
 		while (s[len])
 		{
-			ft_putchar_fd(s[len], 1);
+			ft_putchar_fd(s[len], std);
 			len++;
 		}
 	}
