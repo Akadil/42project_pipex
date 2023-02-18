@@ -1,7 +1,7 @@
 # 42 project - pipex
 > Status: finished. 125/125
 
-The purpose of this project is the discovery in detail UNIX mechanism - `pipe`.
+The purpose of this project is to discovere in details the UNIX mechanism - `pipe`.
 
 ## Implementation
 Clone repository and type
