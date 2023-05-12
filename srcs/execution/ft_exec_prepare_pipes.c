@@ -6,7 +6,7 @@
 /*   By: akalimol <akalimol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:02 by akalimol          #+#    #+#             */
-/*   Updated: 2023/02/16 16:01:15 by akalimol         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:19:37 by akalimol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	ft_prepare_beg(t_data *my_data)
 	fd[1] = -1;
 	if (pipe(fd) == -1)
 		ft_perror_clean_exit(my_data, "Pipe failed");
-	my_data->pipe_fd[0] = fd[0];
-	my_data->pipe_fd[1] = fd[1];
-	my_data->prev_fd = open(my_data->infile, O_RDONLY);
+	my_data->pipe_fd[0] = fd[0];						// For future
+	my_data->pipe_fd[1] = fd[1];						// out 
+	my_data->prev_fd = open(my_data->infile, O_RDONLY); // in 
 	if (my_data->prev_fd == -1)
 		ft_perror(my_data->infile);
 }
@@ -65,12 +65,12 @@ void	ft_prepare_mid(t_data *my_data)
 
 	fd[0] = -1;
 	fd[1] = -1;
-	my_data->prev_fd = my_data->pipe_fd[0];
+	my_data->prev_fd = my_data->pipe_fd[0];				// in (from future)
 	close(my_data->pipe_fd[1]);
 	if (pipe(fd) == -1)
 		ft_perror_clean_exit(my_data, "Pipe failed");
-	my_data->pipe_fd[1] = fd[1];
-	my_data->pipe_fd[0] = fd[0];
+	my_data->pipe_fd[1] = fd[1];						// out
+	my_data->pipe_fd[0] = fd[0];						// for future 
 }
 
 /*
